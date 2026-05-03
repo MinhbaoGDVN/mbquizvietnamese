@@ -1,2 +1,0 @@
-# mbquizvietnamese
-Essy Vietnamese !
