@@ -1,69 +1,51 @@
-// IMPORT FILES
 import { readData } from "./readdata.js";
 import { randomQuestion } from "./randomquestion.js";
 import { handleQuestion } from "./handle.js";
-import { playAnimation } from "./animation.js";
 
-// MAIN LOOP
+let score = 0;
+
 async function gameLoop() {
 
     console.log("===== START LOOP =====");
 
-    try {
+    const data = await readData();
 
-        // 1. READ DATA
-        const data = await readData();
+    if (!data || data.length === 0) {
 
-        // CHECK EMPTY
-        if (!data || data.length === 0) {
+        console.error("Database trống!");
 
-            console.error("Database trống!");
-            
-            // THỬ LẠI SAU 3 GIÂY
-            setTimeout(gameLoop, 3000);
-            return;
-
-        }
-
-        console.log("Read data success!");
-
-        // 2. RANDOM QUESTION
-        const question = randomQuestion(data);
-
-        // CHECK ERROR
-        if (!question) {
-
-            console.error("Không lấy được question!");
-
-            setTimeout(gameLoop, 3000);
-            return;
-
-        }
-
-        console.log("Question loaded!");
-
-        // 3. HANDLE HTML
-        await handleQuestion(question);
-
-        console.log("Handle success!");
-
-        // 4. PLAY ANIMATION
-        playAnimation();
-
-        console.log("Animation success!");
+        setTimeout(gameLoop, 2000);
+        return;
 
     }
-    catch (error) {
 
-        console.error("GAME LOOP ERROR:");
-        console.error(error);
+    // random câu hỏi
+    const question = randomQuestion(data);
 
-        // RETRY
-        setTimeout(gameLoop, 3000);
+    // xử lý câu hỏi
+    const result = await handleQuestion(question);
+
+    // đúng
+    if (result === true) {
+
+        score++;
+
+        console.log("Correct!");
+        console.log("Score:", score);
+
+    } else {
+
+        console.log("Wrong!");
 
     }
+
+    // update html score
+    document.getElementById("score").textContent =
+        `Score : ${score}`;
+
+    // câu tiếp theo
+    setTimeout(gameLoop, 1000);
 
 }
 
-// START GAME
 gameLoop();
