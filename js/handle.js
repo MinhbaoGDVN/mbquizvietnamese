@@ -4,6 +4,7 @@ export async function handleQuestion(question) {
         throw new Error("Question empty!");
     }
 
+    // render question
     document.getElementById("question").textContent =
         question.question;
 
@@ -18,5 +19,30 @@ export async function handleQuestion(question) {
 
     document.getElementById("D").textContent =
         question.d;
+
+    // chờ người chơi click
+    return new Promise((resolve) => {
+
+        const answers =
+            document.querySelectorAll(".answer");
+
+        answers.forEach((button) => {
+
+            button.onclick = () => {
+
+                const playerAnswer =
+                    button.dataset.answer;
+
+                // kiểm tra đúng/sai
+                const correct =
+                    playerAnswer === question.answer;
+
+                resolve(correct);
+
+            };
+
+        });
+
+    });
 
 }
