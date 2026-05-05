@@ -1,10 +1,15 @@
+let questionStartTime = 0;
+
 export async function handleQuestion(question) {
 
     if (!question) {
         throw new Error("Question empty!");
     }
 
-    // render question
+    // ===== LOAD QUESTION =====
+
+    questionStartTime = Date.now();
+
     document.getElementById("question").textContent =
         question.question;
 
@@ -20,6 +25,8 @@ export async function handleQuestion(question) {
     document.getElementById("D").textContent =
         question.d;
 
+    // ===== WAIT PLAYER =====
+
     return new Promise((resolve) => {
 
         const answers =
@@ -29,7 +36,7 @@ export async function handleQuestion(question) {
 
             button.onclick = async () => {
 
-                // tránh spam click
+                // khóa click spam
                 answers.forEach((btn) => {
                     btn.onclick = null;
                 });
@@ -40,36 +47,80 @@ export async function handleQuestion(question) {
                 const correct =
                     playerAnswer === question.answer;
 
-                // đúng = xanh dương
+                let earnedScore = 0;
+
+                // ===== CORRECT =====
+
                 if (correct) {
 
+                    // màu xanh
                     button.style.background =
                         "dodgerblue";
 
+                    // tính thời gian
+                    const now = Date.now();
+
+                    const seconds =
+                        (now - questionStartTime) / 1000;
+
+                    // tránh chia 0
+                    const safeSeconds =
+                        Math.max(seconds, 1);
+
+                    // tính điểm
+                    earnedScore =
+                        Math.max(
+                            1,
+                            Math.min(
+                                1000,
+                                Math.floor(
+                                    1000 / safeSeconds
+                                )
+                            )
+                        );
+
+                    console.log(`
+Correct!
+Time: ${seconds.toFixed(2)}s
++${earnedScore} score
+                    `);
+
                 }
 
-                // sai = đỏ
+                // ===== WRONG =====
+
                 else {
 
+                    // màu đỏ
                     button.style.background =
                         "red";
 
+                    console.log("Wrong!");
+
                 }
 
-                // chờ 1 giây
+                // ===== WAIT 1 SECOND =====
+
                 await new Promise((r) =>
                     setTimeout(r, 1000)
                 );
 
-                // reset màu
+                // ===== RESET COLOR =====
+
                 answers.forEach((btn) => {
 
                     btn.style.background = "";
 
                 });
 
-                // trả kết quả
-                resolve(correct);
+                // ===== RETURN RESULT =====
+
+                resolve({
+
+                    correct: correct,
+                    score: earnedScore
+
+                });
 
             };
 
