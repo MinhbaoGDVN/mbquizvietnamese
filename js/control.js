@@ -1,51 +1,127 @@
-import { readData } from "./readdata.js";
-import { randomQuestion } from "./randomquestion.js";
-import { handleQuestion } from "./handle.js";
+import { readData }
+from "./readdata.js";
+
+import { randomQuestion }
+from "./randomquestion.js";
+
+import { handleQuestion }
+from "./handle.js";
+
+// ===== SCORE =====
 
 let score = 0;
 
+// ===== MAIN LOOP =====
+
 async function gameLoop() {
 
-    console.log("===== START LOOP =====");
+    console.log(
+        "===== START LOOP ====="
+    );
 
-    const data = await readData();
+    try {
 
-    if (!data || data.length === 0) {
+        // ===== READ DATABASE =====
 
-        console.error("Database trống!");
+        const data =
+            await readData();
 
-        setTimeout(gameLoop, 2000);
-        return;
+        // ===== CHECK DATABASE =====
+
+        if (
+            !data ||
+            data.length === 0
+        ) {
+
+            console.error(
+                "Database trống!"
+            );
+
+            setTimeout(
+                gameLoop,
+                1000
+            );
+
+            return;
+
+        }
+
+        // ===== RANDOM QUESTION =====
+
+        const question =
+            randomQuestion(data);
+
+        // ===== CHECK QUESTION =====
+
+        if (!question) {
+
+            console.error(
+                "Question lỗi!"
+            );
+
+            setTimeout(
+                gameLoop,
+                1000
+            );
+
+            return;
+
+        }
+
+        // ===== HANDLE QUESTION =====
+
+        const result =
+            await handleQuestion(
+                question
+            );
+
+        // ===== ADD SCORE =====
+
+        if (result.correct) {
+
+            score += result.score;
+
+            console.log(`
+Added:
++${result.score}
+
+Total:
+${score}
+            `);
+
+        }
+
+        // ===== UPDATE UI =====
+
+        document.getElementById("score")
+        .textContent =
+            `Score : ${score}`;
+
+        // ===== NEXT LOOP =====
+
+        gameLoop();
 
     }
 
-    // random câu hỏi
-    const question = randomQuestion(data);
+    // ===== ERROR =====
 
-    // xử lý câu hỏi
-    const result = await handleQuestion(question);
+    catch (error) {
 
-    // đúng
-    if (result === true) {
+        console.error(
+            "Loop error:",
+            error
+        );
 
-        score++;
-
-        console.log("Correct!");
-        console.log("Score:", score);
-
-    } else {
-
-        console.log("Wrong!");
+        // thử lại sau 1 giây
+        setTimeout(
+            gameLoop,
+            1000
+        );
 
     }
-
-    // update html score
-    document.getElementById("score").textContent =
-        `Score : ${score}`;
-
-    // câu tiếp theo
-    setTimeout(gameLoop, 1000);
 
 }
+
+// ===== START =====
 
 gameLoop();
