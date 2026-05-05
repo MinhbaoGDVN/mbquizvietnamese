@@ -4,19 +4,11 @@ export async function handleQuestion(question) {
         throw new Error("Question empty!");
     }
 
-    document.getElementById("question").innerText =
-        question.question;
-
-    document.getElementById("A").innerText =
-        question.A;
-
-    document.getElementById("B").innerText =
-        question.B;
-
-    document.getElementById("C").innerText =
-        question.C;
-
-    document.getElementById("D").innerText =
-        question.D;
+    document.getElementById("question").textContent = data.question;
+    
+    document.getElementById("A").textContent = data.A;
+    document.getElementById("B").textContent = data.B;
+    document.getElementById("C").textContent = data.C;
+    document.getElementById("D").textContent = data.D;
 
 }
