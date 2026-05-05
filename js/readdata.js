@@ -1,18 +1,25 @@
-export async function readData() {
+async function readData() {
 
     try {
 
-        const response = await fetch("../databass.json");
+        const response = await fetch(
+            "https://mbquizvietnamesedata.vercel.app/databass.json"
+        );
+
+        if (!response.ok) {
+
+            console.error("Cannot load databass.json");
+            return null;
+
+        }
 
         const data = await response.json();
 
         return data;
 
-    }
-    catch (error) {
+    } catch (error) {
 
         console.error("Read data error:", error);
-
         return null;
 
     }
