@@ -8,16 +8,19 @@ export async function handleQuestion(question) {
         throw new Error("Question empty!");
     }
 
-    // reset trạng thái cho câu mới
+    // ===== RESET =====
+
     answering = false;
 
-    // reset UI
-    document.querySelectorAll(".answer")
-    .forEach((btn) => {
+    const answers =
+        document.querySelectorAll(".answer");
+
+    answers.forEach((btn) => {
 
         btn.style.background = "";
 
-        btn.style.pointerEvents = "auto";
+        btn.style.pointerEvents =
+            "auto";
 
     });
 
@@ -25,38 +28,80 @@ export async function handleQuestion(question) {
 
     questionStartTime = Date.now();
 
-    document.getElementById("question").textContent =
+    document.getElementById("question")
+    .textContent =
         question.question;
 
-    document.getElementById("A").textContent =
-        question.a;
+    // ===== ANSWER ELEMENTS =====
 
-    document.getElementById("B").textContent =
-        question.b;
+    const answerA =
+        document.getElementById("A");
 
-    document.getElementById("C").textContent =
-        question.c;
+    const answerB =
+        document.getElementById("B");
 
-    document.getElementById("D").textContent =
-        question.d;
+    const answerC =
+        document.getElementById("C");
+
+    const answerD =
+        document.getElementById("D");
+
+    // ===== A =====
+
+    answerA.textContent =
+        question.a || "";
+
+    answerA.style.display =
+        question.a ? "block" : "none";
+
+    // ===== B =====
+
+    answerB.textContent =
+        question.b || "";
+
+    answerB.style.display =
+        question.b ? "block" : "none";
+
+    // ===== C =====
+
+    answerC.textContent =
+        question.c || "";
+
+    answerC.style.display =
+        question.c ? "block" : "none";
+
+    // ===== D =====
+
+    answerD.textContent =
+        question.d || "";
+
+    answerD.style.display =
+        question.d ? "block" : "none";
+
+    // ===== WAIT FOR PLAYER =====
 
     return new Promise((resolve) => {
-
-        const answers =
-            document.querySelectorAll(".answer");
 
         answers.forEach((button) => {
 
             button.onclick = async () => {
 
-                // chống spam
+                // chống spam click
                 if (answering) {
+                    return;
+                }
+
+                // nếu nút bị ẩn thì bỏ qua
+                if (
+                    button.style.display ===
+                    "none"
+                ) {
                     return;
                 }
 
                 answering = true;
 
-                // khóa input
+                // khóa toàn bộ input
                 answers.forEach((btn) => {
 
                     btn.style.pointerEvents =
@@ -68,7 +113,8 @@ export async function handleQuestion(question) {
                     button.dataset.answer;
 
                 const correct =
-                    playerAnswer === question.answer;
+                    playerAnswer ===
+                    question.answer;
 
                 let earnedScore = 0;
 
@@ -79,13 +125,19 @@ export async function handleQuestion(question) {
                     button.style.background =
                         "dodgerblue";
 
-                    const now = Date.now();
+                    const now =
+                        Date.now();
 
                     const seconds =
-                        (now - questionStartTime) / 1000;
+                        (now -
+                        questionStartTime)
+                        / 1000;
 
                     const safeSeconds =
-                        Math.max(seconds, 1);
+                        Math.max(
+                            seconds,
+                            1
+                        );
 
                     earnedScore =
                         Math.max(
@@ -93,7 +145,8 @@ export async function handleQuestion(question) {
                             Math.min(
                                 1000,
                                 Math.floor(
-                                    1000 / safeSeconds
+                                    1000 /
+                                    safeSeconds
                                 )
                             )
                         );
@@ -113,25 +166,32 @@ Time: ${seconds.toFixed(2)}s
                     button.style.background =
                         "red";
 
-                    console.log("Wrong!");
+                    console.log(
+                        "Wrong!"
+                    );
 
                 }
 
                 // ===== GIỮ MÀU 1 GIÂY =====
 
                 await new Promise((r) =>
-                    setTimeout(r, 1000)
+                    setTimeout(
+                        r,
+                        1000
+                    )
                 );
 
-                // mở lại input cho câu sau
-                answering = false;
+                // ===== DONE =====
 
-                // ===== TRẢ KẾT QUẢ =====
+                answering = false;
 
                 resolve({
 
-                    correct: correct,
-                    score: earnedScore
+                    correct:
+                        correct,
+
+                    score:
+                        earnedScore
 
                 });
 
