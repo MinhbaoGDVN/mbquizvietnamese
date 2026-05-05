@@ -1,9 +1,9 @@
-async function readData() {
+export async function readData() {
 
     try {
 
         const response = await fetch(
-            "https://mbquizvietnamesedata.vercel.app/databass.json"
+            `https://mbquizvietnamesedata.vercel.app/databass.json?t=${Date.now()}`
         );
 
         if (!response.ok) {
