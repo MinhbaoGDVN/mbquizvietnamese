@@ -8,15 +8,15 @@ export async function handleQuestion(question) {
         question.question;
 
     document.getElementById("A").textContent =
-        question.A;
+        question.a;
 
     document.getElementById("B").textContent =
-        question.B;
+        question.b;
 
     document.getElementById("C").textContent =
-        question.C;
+        question.c;
 
     document.getElementById("D").textContent =
-        question.D;
+        question.d;
 
 }
