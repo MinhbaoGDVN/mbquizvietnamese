@@ -8,8 +8,18 @@ export async function handleQuestion(question) {
         throw new Error("Question empty!");
     }
 
-    // reset trạng thái
+    // reset trạng thái cho câu mới
     answering = false;
+
+    // reset UI
+    document.querySelectorAll(".answer")
+    .forEach((btn) => {
+
+        btn.style.background = "";
+
+        btn.style.pointerEvents = "auto";
+
+    });
 
     // ===== LOAD QUESTION =====
 
@@ -39,14 +49,14 @@ export async function handleQuestion(question) {
 
             button.onclick = async () => {
 
-                // chống spam click
+                // chống spam
                 if (answering) {
                     return;
                 }
 
                 answering = true;
 
-                // khóa toàn bộ input
+                // khóa input
                 answers.forEach((btn) => {
 
                     btn.style.pointerEvents =
@@ -107,24 +117,13 @@ Time: ${seconds.toFixed(2)}s
 
                 }
 
-                // ===== CHỜ ANIMATION =====
+                // ===== GIỮ MÀU 1 GIÂY =====
 
                 await new Promise((r) =>
                     setTimeout(r, 1000)
                 );
 
-                // ===== RESET =====
-
-                answers.forEach((btn) => {
-
-                    btn.style.background = "";
-
-                    btn.style.pointerEvents =
-                        "auto";
-
-                });
-
-                // mở lại input
+                // mở lại input cho câu sau
                 answering = false;
 
                 // ===== TRẢ KẾT QUẢ =====
