@@ -1,10 +1,15 @@
 let questionStartTime = 0;
 
+let answering = false;
+
 export async function handleQuestion(question) {
 
     if (!question) {
         throw new Error("Question empty!");
     }
+
+    // reset trạng thái
+    answering = false;
 
     // ===== LOAD QUESTION =====
 
@@ -25,8 +30,6 @@ export async function handleQuestion(question) {
     document.getElementById("D").textContent =
         question.d;
 
-    // ===== WAIT PLAYER =====
-
     return new Promise((resolve) => {
 
         const answers =
@@ -36,9 +39,19 @@ export async function handleQuestion(question) {
 
             button.onclick = async () => {
 
-                // khóa click spam
+                // chống spam click
+                if (answering) {
+                    return;
+                }
+
+                answering = true;
+
+                // khóa toàn bộ input
                 answers.forEach((btn) => {
-                    btn.onclick = null;
+
+                    btn.style.pointerEvents =
+                        "none";
+
                 });
 
                 const playerAnswer =
@@ -49,25 +62,21 @@ export async function handleQuestion(question) {
 
                 let earnedScore = 0;
 
-                // ===== CORRECT =====
+                // ===== ĐÚNG =====
 
                 if (correct) {
 
-                    // màu xanh
                     button.style.background =
                         "dodgerblue";
 
-                    // tính thời gian
                     const now = Date.now();
 
                     const seconds =
                         (now - questionStartTime) / 1000;
 
-                    // tránh chia 0
                     const safeSeconds =
                         Math.max(seconds, 1);
 
-                    // tính điểm
                     earnedScore =
                         Math.max(
                             1,
@@ -87,11 +96,10 @@ Time: ${seconds.toFixed(2)}s
 
                 }
 
-                // ===== WRONG =====
+                // ===== SAI =====
 
                 else {
 
-                    // màu đỏ
                     button.style.background =
                         "red";
 
@@ -99,21 +107,27 @@ Time: ${seconds.toFixed(2)}s
 
                 }
 
-                // ===== WAIT 1 SECOND =====
+                // ===== CHỜ ANIMATION =====
 
                 await new Promise((r) =>
                     setTimeout(r, 1000)
                 );
 
-                // ===== RESET COLOR =====
+                // ===== RESET =====
 
                 answers.forEach((btn) => {
 
                     btn.style.background = "";
 
+                    btn.style.pointerEvents =
+                        "auto";
+
                 });
 
-                // ===== RETURN RESULT =====
+                // mở lại input
+                answering = false;
+
+                // ===== TRẢ KẾT QUẢ =====
 
                 resolve({
 
