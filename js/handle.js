@@ -20,7 +20,6 @@ export async function handleQuestion(question) {
     document.getElementById("D").textContent =
         question.d;
 
-    // chờ người chơi click
     return new Promise((resolve) => {
 
         const answers =
@@ -28,15 +27,48 @@ export async function handleQuestion(question) {
 
         answers.forEach((button) => {
 
-            button.onclick = () => {
+            button.onclick = async () => {
+
+                // tránh spam click
+                answers.forEach((btn) => {
+                    btn.onclick = null;
+                });
 
                 const playerAnswer =
                     button.dataset.answer;
 
-                // kiểm tra đúng/sai
                 const correct =
                     playerAnswer === question.answer;
 
+                // đúng = xanh dương
+                if (correct) {
+
+                    button.style.background =
+                        "dodgerblue";
+
+                }
+
+                // sai = đỏ
+                else {
+
+                    button.style.background =
+                        "red";
+
+                }
+
+                // chờ 1 giây
+                await new Promise((r) =>
+                    setTimeout(r, 1000)
+                );
+
+                // reset màu
+                answers.forEach((btn) => {
+
+                    btn.style.background = "";
+
+                });
+
+                // trả kết quả
                 resolve(correct);
 
             };
