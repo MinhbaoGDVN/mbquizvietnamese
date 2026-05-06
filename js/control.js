@@ -15,10 +15,6 @@ let score = 0;
 
 async function gameLoop() {
 
-    console.log(
-        "===== START LOOP ====="
-    );
-
     try {
 
         // ===== READ DATABASE =====
