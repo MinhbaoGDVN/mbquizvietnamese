@@ -53,6 +53,10 @@ async function gameLoop() {
 
         // ===== CHECK QUESTION =====
 
+        console.log(
+            `Question : ID ${question.id}`
+        );
+
         if (!question) {
 
             console.error(
