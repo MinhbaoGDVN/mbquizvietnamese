@@ -1,0 +1,10 @@
+https://mbquizvietnamese.vercel.app/
+https://mbquizvietnamese.vercel.app/LICENSE
+https://mbquizvietnamese.vercel.app/index.html
+https://mbquizvietnamese.vercel.app/google12414d9d4916364f.html
+https://mbquizvietnamese.vercel.app/style.css
+https://mbquizvietnamese.vercel.app/js/animation.js
+https://mbquizvietnamese.vercel.app/js/control.js
+https://mbquizvietnamese.vercel.app/js/handle.js
+https://mbquizvietnamese.vercel.app/js/randomquestion.js
+https://mbquizvietnamese.vercel.app/js/readdata.js
