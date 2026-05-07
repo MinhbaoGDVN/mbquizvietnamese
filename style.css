@@ -5,6 +5,13 @@
     font-family:Arial, Helvetica, sans-serif;
 }
 
+.footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+}
+
 body{
     background:#22b14c;
     color:white;
