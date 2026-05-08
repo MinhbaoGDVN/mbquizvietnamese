@@ -12,6 +12,11 @@
   color: rgba(255,255,255,0.3);
 }
 
+.seo-text {
+  font-size: 0;
+  opacity: 0.01;
+}
+
 body{
     background:#22b14c;
     color:white;
@@ -95,6 +100,8 @@ body{
 .answer:active{
     transform:scale(0.98);
 }
+
+
 
 /* CORRECT ANSWER */
 
