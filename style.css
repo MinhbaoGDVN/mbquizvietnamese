@@ -12,9 +12,15 @@
   color: rgba(255,255,255,0.3);
 }
 
-.seo-text {
-  font-size: 0;
-  opacity: 0.01;
+.intro {
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+
+  text-align: center;
+
+  margin-bottom: 20px;
+
+  max-width: 600px;
 }
 
 body{
