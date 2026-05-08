@@ -145,7 +145,7 @@ export async function handleQuestion(question) {
                             Math.min(
                                 1000,
                                 Math.floor(
-                                    10000 /
+                                    3000 /
                                     safeSeconds
                                 )
                             )
