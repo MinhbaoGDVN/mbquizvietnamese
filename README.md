@@ -19,3 +19,5 @@ A Vietnamese idiom puzzle game where players solve folk sayings, wordplays, and 
 
 ## 📜 License
 MIT License
+
+© 2026 MinhbaoGDVN and MBS TEAM. MIT LICENSE.<img src="https://flagcdn.com/w20/vn.png" alt="VN">
