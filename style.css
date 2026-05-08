@@ -12,15 +12,8 @@
   color: rgba(255,255,255,0.3);
 }
 
-.intro {
-  font-size: 14px;
-  color: rgba(255,255,255,0.6);
-
-  text-align: center;
-
-  margin-bottom: 20px;
-
-  max-width: 600px;
+.seo-info {
+    color: #22b14c;
 }
 
 body{
