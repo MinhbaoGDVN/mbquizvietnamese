@@ -15,7 +15,7 @@ A Vietnamese idiom puzzle game where players solve folk sayings, wordplays, and 
 - JavaScript
 
 ## 🚀 Play Online
-![Play here ](https://mbquizvietnamese.vercel.app/)
+[Play here ](https://mbquizvietnamese.vercel.app/)
 
 ## 📜 License
 MIT License
