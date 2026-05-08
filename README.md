@@ -1,0 +1,21 @@
+## MB Quiz Vietnamese
+
+A Vietnamese idiom puzzle game where players solve folk sayings, wordplays, and language challenges through 200+ handcrafted questions.
+
+## 🎮 Features
+- 200+ Vietnamese idiom puzzles
+- Difficulty progression
+- Minimal and lightweight interface
+- Mobile-friendly gameplay
+- Instant answer checking
+
+## 🧠 Tech Stack
+- HTML
+- CSS
+- JavaScript
+
+## 🚀 Play Online
+![Play here ](https://mbquizvietnamese.vercel.app/)
+
+## 📜 License
+MIT License
