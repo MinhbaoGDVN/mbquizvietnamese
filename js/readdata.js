@@ -3,12 +3,12 @@ export async function readData() {
     try {
 
         const response = await fetch(
-            `https://mbquizvietnamesedata.vercel.app/databass.json?t=${Date.now()}`
+            `https://mbquizvietnamesedata.vercel.app/database.json?t=${Date.now()}`
         );
 
         if (!response.ok) {
 
-            console.error("Cannot load databass.json");
+            console.error("Cannot load database.json");
             return null;
 
         }
