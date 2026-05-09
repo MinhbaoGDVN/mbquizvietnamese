@@ -170,7 +170,7 @@ export async function handleQuestion(question) {
 
                     document.getElementById("streak")
                     .textContent =
-                        `🔥 Streak : ${streak}`;
+                        `Streak : ${streak}`;
 
                     const bonusPercent =
                         getStreakBonus();
@@ -190,10 +190,10 @@ export async function handleQuestion(question) {
 Correct!
 Time: ${seconds.toFixed(2)}s
 
-🔥 Streak:
+Streak:
 ${streak}
 
-⚡ Bonus:
+Bonus:
 +${bonusPercent}%
 
 +${earnedScore} score
@@ -211,7 +211,7 @@ ${streak}
                     console.log(`
 Wrong!
 
-💀 Streak Lost:
+Streak Lost:
 ${streak}
                     `);
 
@@ -219,7 +219,7 @@ ${streak}
                     streak = 0;
                     document.getElementById("streak")
                     .textContent =
-                        `🔥 Streak : 0`;
+                        `Streak : 0`;
 
                 }
 
