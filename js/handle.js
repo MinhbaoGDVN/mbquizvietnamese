@@ -2,6 +2,17 @@ let questionStartTime = 0;
 
 let answering = false;
 
+// ===== STREAK =====
+
+let streak = 0;
+
+function getStreakBonus() {
+
+    // mỗi 5 streak = +10%
+    return Math.floor(streak / 5) * 10;
+
+}
+
 export async function handleQuestion(question) {
 
     if (!question) {
@@ -139,7 +150,9 @@ export async function handleQuestion(question) {
                             1
                         );
 
-                    earnedScore =
+                    // ===== BASE SCORE =====
+
+                    const baseScore =
                         Math.max(
                             1,
                             Math.min(
@@ -151,9 +164,34 @@ export async function handleQuestion(question) {
                             )
                         );
 
+                    // ===== STREAK =====
+
+                    streak++;
+
+                    const bonusPercent =
+                        getStreakBonus();
+
+                    // ===== BONUS SCORE =====
+
+                    earnedScore =
+                        Math.floor(
+                            baseScore *
+                            (
+                                1 +
+                                bonusPercent / 100
+                            )
+                        );
+
                     console.log(`
 Correct!
 Time: ${seconds.toFixed(2)}s
+
+🔥 Streak:
+${streak}
+
+⚡ Bonus:
++${bonusPercent}%
+
 +${earnedScore} score
                     `);
 
@@ -166,9 +204,15 @@ Time: ${seconds.toFixed(2)}s
                     button.style.background =
                         "red";
 
-                    console.log(
-                        "Wrong!"
-                    );
+                    console.log(`
+Wrong!
+
+💀 Streak Lost:
+${streak}
+                    `);
+
+                    // reset streak
+                    streak = 0;
 
                 }
 
@@ -191,7 +235,10 @@ Time: ${seconds.toFixed(2)}s
                         correct,
 
                     score:
-                        earnedScore
+                        earnedScore,
+
+                    streak:
+                        streak
 
                 });
 
