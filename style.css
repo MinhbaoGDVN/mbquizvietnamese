@@ -6,10 +6,12 @@
 }
 
 .streak {
+    position:absolute;
+    top:45px;
+    left:15px;
     text-align: center;
     font-size: 18px;
     font-weight: bold;
-    color: orange;
     margin-bottom: 10px;
     text-shadow:
         0 0 10px rgba(255,165,0,0.5);
