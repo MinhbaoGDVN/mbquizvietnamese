@@ -168,6 +168,10 @@ export async function handleQuestion(question) {
 
                     streak++;
 
+                    document.getElementById("streak")
+                    .textContent =
+                        `🔥 Streak : ${streak}`;
+
                     const bonusPercent =
                         getStreakBonus();
 
@@ -213,6 +217,9 @@ ${streak}
 
                     // reset streak
                     streak = 0;
+                    document.getElementById("streak")
+                    .textContent =
+                        `🔥 Streak : 0`;
 
                 }
 
