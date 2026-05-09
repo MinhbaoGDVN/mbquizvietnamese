@@ -174,6 +174,10 @@ export async function handleQuestion(question) {
 
                     const bonusPercent =
                         getStreakBonus();
+                    
+                    document.getElementById("bonus")
+                    .textContent =
+                        `Bonus : +${bonusPercent}%`;
 
                     // ===== BONUS SCORE =====
 
@@ -217,9 +221,14 @@ ${streak}
 
                     // reset streak
                     streak = 0;
+                    
                     document.getElementById("streak")
                     .textContent =
                         `Streak : 0`;
+
+                    document.getElementById("bonus")
+                    .textContent =
+                        `Bonus : +0%`;
 
                 }
 
