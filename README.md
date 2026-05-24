@@ -4,7 +4,7 @@
 
 ## 🔗 Liên kết & Trạng thái
 [![Website](https://img.shields.io/badge/Chơi_ngay-MB_Quiz_Vietnamese-brightgreen?style=for-the-badge&logo=vercel&logoColor=white)](https://mbquizvietnamese.vercel.app/)
-[![License](https://img.shields.io/github/license/MinhbaoGDVN/MB-Quiz-Vietnamese?style=for-the-badge&color=blue)](https://github.com/MinhbaoGDVN/MB-Quiz-Vietnamese/tree/main/LICENSE)
+[![License](https://img.shields.io/github/license/MinhbaoGDVN/MB-Quiz-Vietnamese?style=for-the-badge&color=blue)](https://github.com/MinhbaoGDVN/mbquizvietnamese/tree/main/LICENSE)
 ![Status](https://img.shields.io/badge/Status-Active-success?style=for-the-badge)
 
 ---
