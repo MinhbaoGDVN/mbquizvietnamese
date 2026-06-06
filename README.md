@@ -1,6 +1,6 @@
 # 🧩 MB Quiz Vietnamese
 
-**MB Quiz Vietnamese** là một ứng dụng web giải đố trí tuệ, nơi người chơi thử thách kiến thức về ca dao, tục ngữ và những trò chơi chữ tinh tế trong tiếng Việt. Với hơn 200 câu hỏi được biên soạn thủ công, dự án hướng tới việc bảo tồn và lan tỏa nét đẹp văn hóa Việt Nam thông qua công nghệ web hiện đại.
+**MB Quiz Vietnamese** là một ứng dụng web giải đố trí tuệ, nơi người chơi thử thách kiến thức về ca dao, tục ngữ và những trò chơi chữ tinh tế trong tiếng Việt. Với gần 200 câu hỏi được biên soạn kỹ càng, dự án hướng tới việc bảo tồn và lan tỏa nét đẹp văn hóa Việt Nam thông qua công nghệ web hiện đại.
 
 ## 🔗 Liên kết & Trạng thái
 [![Website](https://img.shields.io/badge/Chơi_ngay-MB_Quiz_Vietnamese-brightgreen?style=for-the-badge&logo=vercel&logoColor=white)](https://mbquizvietnamese.vercel.app/)
