@@ -52,7 +52,7 @@ Dự án được xây dựng bởi sự kết hợp giữa tư duy sáng tạo 
 | Vai trò | Thành viên |
 | :--- | :--- |
 | **Host / Ý tưởng chính** | MinhbaoGDVN |
-| **Lập trình (Coding)** | Minh Bao Studio Inc |
+| **Lập trình (Coding)** | MBS INC |
 | **Meta & Favicon Optimization** | ChatGPT |
 | **Database Construction** | Gemini |
 
@@ -66,5 +66,5 @@ Dự án được xây dựng bởi sự kết hợp giữa tư duy sáng tạo 
     height="20"
     alt="Vietnam">
   <br>
-  <small>© 2026 MinhbaoGDVN and Minh Bao Studio Inc - MIT License.</small>
+  <small>© 2026 MinhbaoGDVN and MBS INC - MIT License.</small>
 </div>
